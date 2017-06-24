@@ -5,49 +5,85 @@ import UIKit
 var str = "Hello, Queues Implementation using arrays"
 
 struct Queues {
-    var front = -1
-    var rear = -1
-    var qData:[Int]? = nil
+    var front:Int = -1
+    var rear:Int = -1
+    var qData:[Int?]? = [Int?]()
     
-    mutating func insertElement(WithData data:Int)
+    mutating func push(WithData data:Int)
     {
         
-        if qData == nil
+        if front == -1 && rear == -1
         {
-            qData = [Int]()
-            front =  0
+            front = 0
             rear = 0
+        }
+        else
+        {
+            rear += 1
         }
 //        print("insertElement at rear \(self.rear)")
         qData?.insert(data, atIndex: rear)
-        rear += 1
+    }
+    
+    mutating func pop()
+    {
+        if front == -1 || front > rear
+        {
+            print("cannot pop as Queue is empty")
+        }
+        else
+        {
+            print("Poping element \(self.qData![front]!)");
+            self.qData?[front] = nil
+            front += 1
+            if front > rear
+            {
+                front = -1
+                rear = -1
+            }
+  
+        }
+    
+    
+    }
+    
+    func peek()
+    {
+        front == -1 ? print("cannot peek as Queue is empty") :print("first element of queue is \(qData![front]!)")
     }
     
     func display()
     {
     
-        if qData != nil
+        if front == -1 || front > rear
         {
-        
-            for data in self.qData!
-            {
-                print("\(data)")
-            }
             
+             print("Queue is empty")
         }
         else
         {
-            print("Queue is empty")
+            for i in front...rear
+            {
+                print("\(self.qData![i]!)")
+            }
         }
     }
 }
 
 var queue = Queues()
-queue.insertElement(WithData: 3)
-queue.insertElement(WithData: 5)
-queue.insertElement(WithData: 20)
-queue.insertElement(WithData: 50)
-
+queue.push(WithData: 3)
+queue.push(WithData: 5)
+queue.push(WithData: 20)
+queue.push(WithData: 50)
+queue.peek()
+queue.display()
+queue.pop()
+queue.pop()
+queue.pop()
+queue.pop()
+queue.pop()
+queue.peek()
+queue.push(WithData: 90)
 queue.display()
 
 

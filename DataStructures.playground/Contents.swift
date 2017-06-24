@@ -89,4 +89,110 @@ queue.display()
 print("Hello, Queues Implementation using linked list")
 
 
+class Node<Element>
+{
+    var data:Element
+    var nxt:Node<Element>?
+    
+    init(data:Element)
+    {
+        self.data = data
+    }
+}
+
+class QueueLL<Element>
+{
+    var front:Node<Element>?
+    var rear:Node<Element>?
+    
+    func push(data:Element)-> QueueLL
+    {
+        let rootNode = Node<Element>(data: data)
+        if front == nil
+        {
+            self.front = rootNode
+            self.rear = rootNode
+            rootNode.nxt = nil
+        }
+        else
+        {
+            self.rear?.nxt = rootNode
+            self.rear = rootNode
+            self.rear?.nxt = nil
+        }
+        
+        return self
+        
+
+    }
+    
+    func pop()
+    {
+        
+        if front == nil
+        {
+            print("Queue is empty")
+        }
+        else
+        {
+            var ptr = self.front
+            print("poping element with data \(ptr!.data)")
+            self.front = self.front?.nxt
+            ptr = nil
+        
+        }
+    
+    
+    }
+    
+    func display()
+    {
+        var ptr = self.front
+        if ptr == nil
+        {
+            print("Queue is empty")
+        }
+        else
+        {
+            while ptr != nil
+            {
+                print("\(ptr!.data)")
+                ptr = ptr?.nxt
+            }
+        
+        }
+        
+    
+    }
+    
+    func peek()
+    {
+        if front == nil
+        {
+                print("Queue is empty")
+        }
+        else
+        {
+            print("peek of queue is \(self.front!.data)")
+        }
+    }
+    
+    
+}
+
+
+let queuell = QueueLL<Int>()
+queuell.push(5)
+queuell.push(10)
+queuell.push(20)
+queuell.push(30)
+queuell.push(40)
+queuell.push(50)
+queuell.pop()
+queuell.peek()
+queuell.display()
+
+
+
+
 

@@ -2,16 +2,21 @@
 
 import UIKit
 
-var str = "Hello, Queues Implementation using arrays"
-
+print("Hello, Queues Implementation using arrays")
+let queueSize = 5
 struct Queues {
     var front:Int = -1
     var rear:Int = -1
-    var qData:[Int?]? = [Int?]()
+    var qData:[Int?]? = Array(count: queueSize, repeatedValue: nil)
     
     mutating func push(WithData data:Int)
     {
+        if rear == queueSize - 1
+        {
+            print("Queue is full reached max capacity")
+            return
         
+        }
         if front == -1 && rear == -1
         {
             front = 0
@@ -41,10 +46,7 @@ struct Queues {
                 front = -1
                 rear = -1
             }
-  
         }
-    
-    
     }
     
     func peek()
@@ -54,10 +56,8 @@ struct Queues {
     
     func display()
     {
-    
         if front == -1 || front > rear
         {
-            
              print("Queue is empty")
         }
         else
@@ -85,5 +85,8 @@ queue.pop()
 queue.peek()
 queue.push(WithData: 90)
 queue.display()
+
+print("Hello, Queues Implementation using linked list")
+
 
 

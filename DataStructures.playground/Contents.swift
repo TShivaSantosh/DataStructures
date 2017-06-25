@@ -294,9 +294,7 @@ struct circularQueue {
     }
     
     func peek()
-    {
-        front == -1 ? print("cannot peek as Queue is empty") :print("first element of queue is \(qArray![front]!)")
-    }
+    \\\\\\\\
     
     
 }

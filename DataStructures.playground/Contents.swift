@@ -2,10 +2,6 @@
 
 import UIKit
 
-/***************************************************************
-                    Queues Implementation
-**************************************************************/
-
 print("Hello, Queues Implementation using linked list")
 class Node<Element>
 {
@@ -330,9 +326,3 @@ cQueue.push(WithData: 19)
 cQueue.push(WithData: 21)
 cQueue.push(WithData: 23)
 cQueue.display()
-
-
-/***************************************************************
-                    Stacks Implementation
-**************************************************************/
-

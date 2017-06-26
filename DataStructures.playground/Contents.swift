@@ -2,7 +2,12 @@
 
 import UIKit
 
+/***************************************************************
+                    Queues Implementation
+**************************************************************/
+
 print("Hello, Queues Implementation using linked list")
+
 class Node<Element>
 {
     var data:Element

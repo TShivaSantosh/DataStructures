@@ -4,7 +4,7 @@ import UIKit
 
 
 /***************************************************************
-Stacks Implementation
+                    Stacks Implementation
 **************************************************************/
 
 let maxStackSize = 5
@@ -21,10 +21,6 @@ class StacksArray {
         {
             print("Stack is full cannot push data \(data)")
             return
-        }
-        else if (top == -1)
-        {
-            top = 0
         }
         else
         {
@@ -77,7 +73,7 @@ class StacksArray {
         else
         {
             print("Stack has following data")
-            for i in 0...top
+            for i in (0...top).reverse()
             {
                 print("\(sArray![i]!)")
                 
@@ -100,5 +96,92 @@ stack.display()
 stack.pop()
 stack.peek()
 
+print("Stack implementation using Linked list")
+class Node
+{
+    var data:Int!
+    var next:Node?
+    init( data:Int)
+    {
+        self.data = data
+    }
+}
+class Stack
+{
+    var top:Node?
+    
+    
+    func push(data:Int)
+    {
+        if top == nil
+        {
+            let node = Node(data: data)
+            node.next = nil
+            top = node
+        }
+        else
+        {
+            let node = Node(data: data)
+            node.next = top
+            top = node
+        }
+    }
+    
+    func pop()
+    {
+        if top == nil
+        {
+            print("Stack is empty")
+        }
+        else
+        {
+            let element = top
+            print("poped element with data \(element?.data ?? 0)")
+            top = top?.next
+        }
+    }
+    
+    func peek()
+    {
+        if top == nil
+        {
+            print("Stack is empty")
+        }
+        else
+        {
+            print("top element is \(top?.data ?? 0)")
+        }
+    
+    }
+    
+    func display()
+    {
+        if top == nil
+        {
+            print("Stack is empty")
+        }
+        else
+        {
+            var ptr = top
+            while ptr != nil
+            {
+                print("\(ptr?.data ?? 0)")
+                ptr = ptr?.next
+            }
+            
+        }
+    
+    }
+    
+}
 
-
+let lStack = Stack()
+lStack.push(1)
+lStack.push(2)
+lStack.push(3)
+lStack.push(4)
+lStack.display()
+lStack.pop()
+lStack.push(4)
+lStack.display()
+lStack.peek()

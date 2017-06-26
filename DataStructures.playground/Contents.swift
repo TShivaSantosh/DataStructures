@@ -189,3 +189,140 @@ queue.pop()
 queue.peek()
 queue.push(WithData: 90)
 queue.display()
+
+print("Hello, Queues Implementation using circular arrays")
+
+let cqMaxSize = 5
+
+struct circularQueue {
+    var front = -1
+    var rear = -1
+    var qArray:[Int?]? = Array( count: cqMaxSize, repeatedValue: nil)
+    mutating func push(WithData data:Int)
+    {
+        if front == 0 && rear == (cqMaxSize - 1)
+        {
+            print("Queue is full && umable to insert data \(data)")
+            return
+        }
+        else if front == -1 && rear == -1
+        {
+            front = 0
+            rear = 0
+            
+        }
+        else if front != 0 && rear == (cqMaxSize - 1)
+        {
+            rear = 0
+        }
+        else
+        {
+            
+            rear += 1
+        }
+        
+        self.qArray![rear] = data
+    }
+    
+    mutating func pop()
+    {
+        print("poping at index \(self.front)")
+        
+        if front == -1
+        {
+            print("Queue is empty")
+        }
+        else if (front == rear)
+        {
+            
+            let poped = self.qArray![front]
+            self.qArray?[front] = nil
+            print("popped element \(poped!)")
+            front = -1
+            rear = -1
+        }
+        else if (front == cqMaxSize - 1)
+        {
+            let poped = self.qArray![front]
+            self.qArray?[front] = nil
+            print("popped element \(poped!)")
+            front = 0
+            
+        }
+        else
+        {
+            let poped = self.qArray![front]
+            self.qArray?[front] = nil
+            print("popped element \(poped!)")
+            front += 1
+            
+        }
+        
+        
+    }
+    
+    func display()
+    {
+        print("display \(front) && \(rear)")
+        if front == -1
+        {
+            print("Queue is empty")
+        }
+        else
+        {
+            if front <= rear{
+                for i in front...rear
+                {
+                    print("\(self.qArray![i]!)")
+                }
+            }
+            else
+            {
+                
+                for i in 0...rear
+                {
+                    print("\(self.qArray![i]!)")
+                }
+                
+                for i in front...(cqMaxSize-1)
+                {
+                    print("\(self.qArray![i]!)")
+                }
+                
+            }
+        }
+    }
+    
+    func peek()
+    {
+        front == -1 ? print("cannot peek as Queue is empty") :print("first element of queue is \(qArray![front]!)")
+    }
+    
+    
+}
+
+
+var cQueue = circularQueue()
+cQueue.push(WithData: 13)
+cQueue.push(WithData: 15)
+cQueue.push(WithData: 17)
+cQueue.push(WithData: 19)
+cQueue.push(WithData: 21)
+cQueue.push(WithData: 23)
+cQueue.peek()
+cQueue.pop()
+cQueue.peek()
+cQueue.push(WithData: 25)
+cQueue.pop()
+cQueue.pop()
+cQueue.pop()
+cQueue.pop()
+cQueue.pop()
+cQueue.display()
+cQueue.push(WithData: 13)
+cQueue.push(WithData: 15)
+cQueue.push(WithData: 17)
+cQueue.push(WithData: 19)
+cQueue.push(WithData: 21)
+cQueue.push(WithData: 23)
+cQueue.display()

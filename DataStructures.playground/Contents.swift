@@ -346,6 +346,7 @@ class StacksArray {
         if top == (maxStackSize - 1)
         {
             print("Stack is full cannot push data \(data)")
+            return
         }
         else if (top == -1)
         {
@@ -360,6 +361,38 @@ class StacksArray {
     }
     
     
+    func pop()
+    {
+        if top == -1
+        {
+            print("Stack is empty")
+            return
+        }
+        else
+        {
+            let element = sArray?[top]
+            print("poping element with data \(element)")
+            sArray?[top] = nil
+            top -= 1
+        }
+    
+    
+    }
+    
+    func peek()
+    {
+        if top == -1
+        {
+            print("Stack is empty")
+        }
+        else
+        {
+            let element = sArray?[top]
+            print("top element is \(element)")
+        }
+    
+    }
+    
     func display()
     {
         
@@ -372,7 +405,8 @@ class StacksArray {
             print("Stack has following data")
             for i in 0...top
             {
-                print("\(sArray![i]!)", separator: ",", terminator: "")
+                print("\(sArray![i]!)")
+                
             }
             
         }
@@ -386,6 +420,11 @@ stack.push(withData: 1)
 stack.push(withData: 2)
 stack.push(withData: 3)
 stack.push(withData: 4)
+stack.push(withData: 5)
+stack.push(withData: 6)
 stack.display()
+stack.pop()
+stack.peek()
+
 
 

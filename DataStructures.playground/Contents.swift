@@ -326,3 +326,66 @@ cQueue.push(WithData: 19)
 cQueue.push(WithData: 21)
 cQueue.push(WithData: 23)
 cQueue.display()
+
+
+
+/***************************************************************
+Stacks Implementation
+**************************************************************/
+
+let maxStackSize = 5
+
+class StacksArray {
+    
+    var sArray:[Int?]? = Array( count: maxStackSize, repeatedValue: nil)
+    var top:Int = -1
+    
+    func push(withData data:Int)
+    {
+        
+        if top == (maxStackSize - 1)
+        {
+            print("Stack is full cannot push data \(data)")
+        }
+        else if (top == -1)
+        {
+            top = 0
+        }
+        else
+        {
+            top += 1
+        }
+        sArray?[top] = data
+        
+    }
+    
+    
+    func display()
+    {
+        
+        if top == -1
+        {
+            print("Stack is empty")
+        }
+        else
+        {
+            print("Stack has following data")
+            for i in 0...top
+            {
+                print("\(sArray![i]!)", separator: ",", terminator: "")
+            }
+            
+        }
+        
+    }
+    
+}
+
+let stack = StacksArray()
+stack.push(withData: 1)
+stack.push(withData: 2)
+stack.push(withData: 3)
+stack.push(withData: 4)
+stack.display()
+
+

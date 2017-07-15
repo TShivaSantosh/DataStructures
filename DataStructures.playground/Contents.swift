@@ -1,7 +1,7 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
-print("Hello, Data Structures")
+print("Hello, Single Linked List")
 
 
 /*
@@ -16,7 +16,9 @@ class Node{
         self.data = data
     }
 }
+
 var start:Node?
+
 func createList(data:Int)->Node?
 {
     if start == nil
@@ -102,7 +104,6 @@ func insertNodeAtEnd(data:Int)->Node?
 
 func insertNodeBeforeNode(value:Int,data:Int)->Node?
 {
-
     var prePtr:Node?
     var ptr:Node? = start
     
@@ -111,10 +112,10 @@ func insertNodeBeforeNode(value:Int,data:Int)->Node?
         prePtr = ptr
         ptr = ptr?.next
     }
+ 
     let result = Node( data)
     result.next = ptr
     prePtr?.next = result
-    
     return start
 }
 
